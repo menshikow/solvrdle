@@ -1,7 +1,8 @@
-fn main() {
-    println!("Hello, world!");
-}
+const GAMES: &str = include_str!("../answers.txt");
 
-fn play<G: Guesser>(answer: &'static str, guesser: G) {
-    // Play six rounds where it invokes the guesser each round.
+fn main() {
+    for answer in GAMES.split_whitespace() {
+        let guesser = solvrdle::algorithms::Naive::new();
+        solvrdle::play(answer, guesser);
+    }
 }
